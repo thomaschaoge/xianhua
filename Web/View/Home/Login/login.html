@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>会员登陆--兄弟缘鲜花网</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="<?php echo _PUBLIC_; ?>css/common.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo _PUBLIC_; ?>css/register.css">
+		<script src="<?php echo _PUBLIC_; ?>js/index.js" type="text/javascript"></script>
+		<script src="<?php echo _PUBLIC_; ?>js/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		var timeout         = 500;
+		var closetimer		= 0;
+		var ddmenuitem      = 0;
+
+		function jsddm_open()
+		{	jsddm_canceltimer();
+			jsddm_close();
+			ddmenuitem = $(this).find('ul').eq(0).css('visibility', 'visible');}
+
+		function jsddm_close()
+		{	if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
+
+		function jsddm_timer()
+		{	closetimer = window.setTimeout(jsddm_close, timeout);}
+
+		function jsddm_canceltimer()
+		{	if(closetimer)
+			{	window.clearTimeout(closetimer);
+				closetimer = null;}}
+
+		$(document).ready(function()
+		{	$('#jsddm > li').bind('mouseover', jsddm_open);
+			$('#jsddm > li').bind('mouseout',  jsddm_timer);});
+
+		document.onclick = jsddm_close;
+		</script>
+	</head>
+	</head>
+	<body>
+		<div id="container">
+			<!--头部开始-->
+			<?php include("./Web/View/Home/Base/header.html"); ?>	
+			<!--头部结束-->
+			<!--主体开始-->
+			<div id="main">
+				<div class="denglu">
+					<div class="denglu_title"></div>
+					<div class="denglu_text">
+						<table border="0" width="300" cellpadding="4" cellspacing="0" align="center">
+						<form action="<?php echo URL."/Login/doLogin";?>" method="post">
+							<tr>
+								<th>用户名：</th>
+								<td><input type="text" name="username"></td>
+							</tr>
+							<tr>
+								<th>密码：</th>
+								<td><input type="password" name="pass"></td>
+							</tr>
+							<tr>
+								<th>验证码：</th>
+								<td>
+									<input type="text" name="mycode" size="10"/>  
+									<img src="<?php echo URL."/Login/verify"; ?>" onclick="this.src='<?php echo URL."/Login/verify";?> ?a='+Math.random();" />
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center">已是梦绮缘用户，在此登录</td>
+							</tr>
+							<tr>
+								<td colspan="2" align="center"><input type="image" src="<?php echo _PUBLIC_;?>images/dl.jpg" name="denglu"> <a href="">忘记密码</a></td>
+							</tr>
+						</form>
+						<?php
+						//判断是否有错误输出
+						if(!empty($this->errinfo)){
+							echo "<span style='color:red'>{$this->errinfo}</span>";
+						}
+						?>
+						</table>
+					</div>
+				</div>
+				<div class="zhu">
+					<div class="zhu_title"></div>
+					<div class="zhu_text">
+						<ul>
+						<h3>注册会员有什么优惠？</h3>
+						<li>1.在梦绮缘购物可享受折扣</li>
+						<li>2.可登录“我的帐户”，享受更多功能</li>
+						<li>3.每次购物完可获得积分</li>
+						<li>4.每次购买均可获得10元返券</li>
+						<li><a href="<?php echo URL."/Users/add"?>"><img src="<?php echo _PUBLIC_;?>images/huiyuanzhu.jpg" alt=""></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<!--主体结束-->
+			<!--footer开始-->
+		<?php include("./Web/View/Home/Base/footer.html"); ?>
+			<!--footer结束-->
+		</div>
+	</body>
+</html>

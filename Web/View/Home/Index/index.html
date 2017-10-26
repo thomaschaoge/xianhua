@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>首页--兄弟缘鲜花网</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="<?php echo _PUBLIC_; ?>css/common.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo _PUBLIC_; ?>css/index.css">
+		<script src="<?php echo _PUBLIC_; ?>js/index.js" type="text/javascript"></script>
+		<script src="<?php echo _PUBLIC_; ?>js/jquery.min.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			var timeout         = 500;
+			var closetimer		= 0;
+			var ddmenuitem      = 0;
+
+			function jsddm_open()
+			{	jsddm_canceltimer();
+				jsddm_close();
+				ddmenuitem = $(this).find('ul').eq(0).css('visibility', 'visible');}
+
+			function jsddm_close()
+			{	if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
+
+			function jsddm_timer()
+			{	closetimer = window.setTimeout(jsddm_close, timeout);}
+
+			function jsddm_canceltimer()
+			{	if(closetimer)
+				{	window.clearTimeout(closetimer);
+					closetimer = null;}}
+
+			$(document).ready(function()
+			{	$('#jsddm > li').bind('mouseover', jsddm_open);
+				$('#jsddm > li').bind('mouseout',  jsddm_timer);});
+
+			document.onclick = jsddm_close;
+		</script>
+	</head>
+	<body>		
+		<div id="container">
+			<!--头部开始-->
+			<?php include("./Web/View/Home/Base/header.html"); ?>	
+			<!--头部结束-->
+			<!--主体开始-->
+			<div id="main">
+				<!--mainA开始-->
+				<div class="mainA">
+					<div class="mainA_le">
+						<!--幻灯片开始-->
+						<div class="mainA_le_flash">
+							<div class="mainA_le_flash_tu">
+							<script type="text/javascript">
+									<!--焦点图开始-->
+									<!--
+									var focus_width=728;
+									var focus_height=345;
+									var text_height=0;
+									var swf_height = focus_height+text_height;
+									var pics='<?php echo _PUBLIC_; ?>images/02.jpg|<?php echo _PUBLIC_; ?>images/03.jpg|<?php echo _PUBLIC_; ?>images/04.jpg|images/05.jpg';
+									var links='#|#|#|#|#|#|#';
+									var texts='兄弟缘鲜花网'; 
+									document.write('<object ID="focus_flash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ focus_width +'" height="'+ swf_height +'">');
+									document.write('<param name="allowScriptAccess" value="sameDomain"><param name="movie" value="<?php echo _PUBLIC_; ?>images/pix.swf"><param name="quality" value="high"><param name="wmode" value="transparent">');
+									document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+									document.write('<param name="FlashVars" value="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'">');
+									document.write('<embed ID="focus_flash" src="<?php echo _PUBLIC_; ?>images/pix.swf" wmode="opaque" FlashVars="pics='+pics+'&links='+links+'&texts='+texts+'&borderwidth='+focus_width+'&borderheight='+focus_height+'&textheight='+text_height+'" menu="false" quality="high" width="'+ focus_width +'" height="'+ swf_height +'" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); 
+									document.write('</object>');
+									//-->
+									<!--焦点图结束-->
+							</script>
+
+							</div>
+							<div class="mainA_le_flash_zi">
+								<ul>
+									<li>卡通花束</li>
+									<li>爱情鲜花</li>
+									<li class="active">淘宝店订花</li>
+									<li>生日鲜花</li>
+									<li>甜蜜爱情</li>
+								</ul>
+							</div>
+						</div>
+						<!--幻灯片结束-->
+						<!--热销产品开始-->
+						<div class="mainA_le_rexiao">
+							<div class="mainA_rexiao_title"><h2 class="en">热销商品</h3><a href="" class="more">查看所有新品</a></div>
+							<div class="mainA_rexiao_text">
+								<!--热销循环开始-->
+									<?php
+										foreach($this->goodsrx as $goods){
+											echo "<div class=\"rexiao\">";
+											echo "<div class=\"rexiao_tu\"><a href=\" ".URL."/index/detail?id={$goods['id']} \" target=\"_blank\"><img src=\" "._PUBLIC_."/uploads/m_{$goods['picname']}\" width=\"172\" height=\"227\"></a></div>";
+											echo "<div class=\"rexiao_wen\">";
+											echo "<ul>";
+											echo "<li>{$goods['goods']} <font color=\"#cc0000\"><b>[￥{$goods['price']}]</b></font></li>";
+											echo "<li>编号:{$goods['id']}</li>";
+											echo "<li><a href=\" ".URL."/index/detail?id={$goods['id']} \" target=\"_blank\">查看详情</a> <a href=\"".URL."/shopping/add?id={$goods['id']}\" target=\"_blank\">立即订购</a></li>";
+											echo "</ul>";
+											echo "</div>";
+											echo "</div>";
+										}
+									?>
+								<div class="clear"></div>
+								<!--热销循环结束-->
+							</div>
+						</div>
+						<!--热销产品结束-->
+					</div>
+					<!--mainA_ri开始-->
+					<div class="mainA_ri">
+						<div class="mainA_ri_tel">
+							<div class="mainA_tel_title"></div>
+							<div class="mainA_tel_text">免长途费 二十四小时服务<br><span style="color:#ec1d15; font:bold 30px 'arial';padding-left:20px;">400-123-4567</span><br>十余年专业配送 全年不休 五星服务</div>
+						</div>
+						<div class="mainA_ri_news">
+							<div class="mainA_news_title">
+								<ul>
+									<li class="sd01" id="m01">新闻中心</li>
+									<li class="sd02" id="m02">为什么选择我们</li>
+								</ul>
+							</div>
+							<div class="mainA_news_text">
+								<ul id="c01">
+									<li><font color="#cc0000">·新闻</font> <a href="">父亲节是哪一天?2014父亲节是</a></li>
+									<li><font color="#cc0000">·新闻</font> <a href="">毕业送花 最好的祝福</a></li>
+									<li><font color="#cc0000">·新闻</font> <a href="">网上送花，送花网站哪个靠谱</a></li>
+									<li><font color="#cc0000">·新闻</font> <a href="">回馈新老客户，兄弟鲜花王</a></li>
+									<li><font color="#cc0000">·新闻</font> <a href="">兄弟缘鲜花分享感人故事：一个</a></li>
+									<li><font color="#cc0000">·新闻</font> <a href="">520“表白日”送女生什么好？</a></li>
+									<li><font color="#cc0000">·新闻</font> <a href="">兄弟缘鲜花礼品网祝天下母亲节</a></li>
+								</ul>
+								<ul id="c02" class="hidden">
+									<li class="w1"><a href="">专业的鲜花速递服务商</a></li>
+									<li class="w2"><a href="">联手支付宝特约商家好评100%</a></li>
+									<li class="w3"><a href="">中国花卉协会会员</a></li>
+									<li class="w4"><a href="">足不出户，网络、电话均可订购</a></li>
+									<li class="w5"><a href="">中国市区内2-3小时即可送达</a></li>
+									<li class="w6"><a href="">采用昆明花材，保证新鲜</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="mainA_ri_fenlei">
+							<div class="mainA_fenlei_title">推荐分类</div>
+							<div class="mainA_fenlei_text">		
+								<ul>
+									<h4>按用途</h4>
+									<li><a href="">开业鲜花</a></li>
+									<li><a href="">道歉鲜花</a></li>
+									<li><a href="">商务鲜花</a></li>
+									<li><a href="">生日鲜花</a></li>
+									<li><a href="">祝福鲜花</a></li>
+									<li><a href="">探望鲜花</a></li>
+									<li><a href="">哀思鲜花</a></li>
+								</ul>
+								
+								<ul>
+									<h4>按对象</h4>
+									<li><a href="">送恋人</a></li>
+									<li><a href="">母亲父亲</a></li>
+									<li><a href="">送同事</a></li>
+									<li><a href="">送老师</a></li>
+									<li><a href="">送朋友</a></li>
+									<li><a href="">送病人</a></li>
+									<li><a href="">送客户</a></li>
+									<li><a href="">送领导</a></li>
+								</ul>
+								
+								<ul>
+									<h4>按价格</h4>
+									<li><a href="">100-200</a></li>
+									<li><a href="">200-300</a></li>
+									<li><a href="">300-500</a></li>
+									<li><a href="">500-800</a></li>
+									<li><a href="">800元以上</a></li>
+								</ul>
+								
+								<ul>
+									<h4>按种类</h4>
+									<li><a href="">玫瑰</a></li>
+									<li><a href="">百合</a></li>
+									<li><a href="">康乃馨</a></li>
+									<li><a href="">扶朗</a></li>
+									<li><a href="">蛋糕</a></li>
+									<li><a href="">花盒</a></li>
+									<li><a href="">巧克力</a></li>
+									<li><a href="">卡通花</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="mainA_ri_songhua">
+							<div class="mainA_news_title">
+								<li class="sd01" id="mm01">节日送花</li>
+								<li class="sd02" id="mm02">送花常识</li>
+							</div>
+							<div class="mainA_news_text">
+								<ul id="cc01">
+									<li><font color="#cc0000">·</font><a href="">父亲节是哪一天?2014父亲节是</a></li>
+									<li><font color="#cc0000">·</font><a href="">毕业送花 最好的祝福</a></li>
+									<li><font color="#cc0000">·</font><a href="">网上送花，送花网站哪个靠谱</a></li>
+									<li><font color="#cc0000">·</font><a href="">2014年情人节是几月几号？</a></li>
+									<li><font color="#cc0000">·</font><a href="">2014情人节送什么？</a></li>
+									<li><font color="#cc0000">·</font><a href="">情人节异地送花，哪里找</a></li>
+									<li><font color="#cc0000">·</font><a href="">2013圣诞节送什么好？圣诞节鲜花</a></li>
+									<li><font color="#cc0000">·</font><a href="">感恩节送什么花？---网上送花温馨</a></li>
+									<li><font color="#cc0000">·</font><a href="">情人节送什么鲜花给男孩</a></li>
+									<li><font color="#cc0000">·</font><a href="">情人节送什么鲜花给我老公</a></li>
+									<li><font color="#cc0000">·</font><a href="">父亲节订花视频“父爱如山”--梦</a></li>
+								</ul>
+								<ul id="cc02" class="hidden">
+									<li><font color="#cc0000">·</font><a href="">毕业礼物送什么好？</a></li>
+									<li><font color="#cc0000">·</font><a href="">毕业典礼送什么花</a></li>
+									<li><font color="#cc0000">·</font><a href="">2月14日情人节送花注意什么？</a></li>
+									<li><font color="#cc0000">·</font><a href="">元旦给客户送什么花好？</a></li>
+									<li><font color="#cc0000">·</font><a href="">圣诞节送女友什么好？</a></li>
+									<li><font color="#cc0000">·</font><a href="">感恩节是几月几日？---梦绮缘鲜花</a></li>
+									<li><font color="#cc0000">·</font><a href="">2013感恩节礼物送什么好？</a></li>
+									<li><font color="#cc0000">·</font><a href="">马蹄莲的寓意鲜花</a></li>
+									<li><font color="#cc0000">·</font><a href="">最浪漫的花语</a></li>
+									<li><font color="#cc0000">·</font><a href="">鲜花花语</a></li>
+									<li><font color="#cc0000">·</font><a href="">非洲菊 花语</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--mainA_ri结束-->
+					<div class="clear"></div>
+				</div>
+				<!--mainA结束-->
+				<!--新品上市开始-->
+				<div class="xinpin">
+					<div class="mainA_rexiao_title"><h2 class="en">新品上市</h3><a href="" class="more">查看所有新品</a></div>
+					<div class="xinpin_text">
+						<div class="xinpin_text_le"></div>
+						<div class="xinpin_text_ri">
+								<!--新品循环开始-->
+								<?php
+									foreach($this->goodsxp as $goods){
+										echo "<div class=\"xinpin_xun\">";
+										echo "<div class=\"xinpin_tu\"><a href=\"".URL."/index/detail?id={$goods['id']} target=\"_blank\" \"><img src=\""._PUBLIC_."/uploads/m_{$goods['picname']}\" width=\"175\" height=\"228\"></a></div>";
+										echo "<div class=\"xinpin_wen\">";
+										echo "<ul>";
+										echo "<li>{$goods['goods']} <font color=\"#cc0000\"><b>[{$goods['price']}元]</b></font></li>";
+										echo "<li>编号：{$goods['id']}</li>";
+										echo "<li><a href=\"".URL."/index/detail?id={$goods['id']}\" target=\"_blank\">查看详情</a> <a href=\"".URL."/shopping/add?id={$goods['id']}\" target=\"_blank\">立即订购</a></li>";
+										echo "</ul>";
+										echo "</div>";
+										echo "</div>";
+									}
+								?>
+								<div class="clear"></div>
+								<!--新品循环结束-->
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--新品上市结束-->
+				<!--特惠推荐开始-->
+				<div class="tehui">
+					<div class="mainA_rexiao_title"><h2 class="en">特惠推荐</h2><a class="more" href="">查看所有新品</a></div>
+					<div class="xinpin_text">
+						<div class="tehui_text_le"></div>
+						<div class="tehui_text_ri">
+								<!--特惠循环开始-->
+								<?php
+									foreach($this->goodsxp as $goods){
+										echo "<div class=\"xinpin_xun\">";
+										echo "<div class=\"xinpin_tu\"><a href=\"".URL."/index/detail?id={$goods['id']} target=\"_blank\" \"><img src=\""._PUBLIC_."/uploads/m_{$goods['picname']}\" width=\"175\" height=\"228\"></a></div>";
+										echo "<div class=\"xinpin_wen\">";
+										echo "<ul>";
+										echo "<li>{$goods['goods']} <font color=\"#cc0000\"><b>[{$goods['price']}元]</b></font></li>";
+										echo "<li>编号：{$goods['id']}</li>";
+										echo "<li><a href=\"".URL."/index/detail?id={$goods['id']}\" target=\"_blank\">查看详情</a> <a href=\"".URL."/shopping/add?id={$goods['id']}\" target=\"_blank\">立即订购</a></li>";
+										echo "</ul>";
+										echo "</div>";
+										echo "</div>";
+									}
+								?>
+								<div class="clear"></div>
+								<!--特惠循环结束-->
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--特惠推荐结束-->
+				<!--浪漫组合开始-->
+				<div class="langman">
+					<div class="mainA_rexiao_title"><h2 class="en">浪漫组合</h3><a href="" class="more">查看所有新品</a></div>
+					<div class="xinpin_text">
+						<div class="langman_text_le"></div>
+						<div class="xinpin_text_ri">
+								<!--新品循环开始-->
+								<?php
+									foreach($this->goodsxp as $goods){
+										echo "<div class=\"xinpin_xun\">";
+										echo "<div class=\"xinpin_tu\"><a href=\"".URL."/index/detail?id={$goods['id']} target=\"_blank\" \"><img src=\""._PUBLIC_."/uploads/m_{$goods['picname']}\" width=\"175\" height=\"228\"></a></div>";
+										echo "<div class=\"xinpin_wen\">";
+										echo "<ul>";
+										echo "<li>{$goods['goods']} <font color=\"#cc0000\"><b>[{$goods['price']}元]</b></font></li>";
+										echo "<li>编号：{$goods['id']}</li>";
+										echo "<li><a href=\"".URL."/index/detail?id={$goods['id']}\" target=\"_blank\">查看详情</a> <a href=\"".URL."/shopping/add?id={$goods['id']}\" target=\"_blank\">立即订购</a></li>";
+										echo "</ul>";
+										echo "</div>";
+										echo "</div>";
+									}
+								?>
+								<div class="clear"></div>
+								<!--新品循环结束-->
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--浪漫组合结束-->
+				<!--卡通开始-->
+				<div class="katong">
+					<div class="katong_huasu">
+						<div class="katong_huasu_title"><h2 class="en">卡通花束</h3><a href="" class="more">查看所有新品</a></div>
+						<div class="katong_huasu_text">
+							<div class="huasu_text_top"><img src="<?php echo _PUBLIC_;?>images/kths1.jpg"><img src="<?php echo _PUBLIC_;?>images/kths2.jpg"></div>
+							<div class="huasu_text_bottom">
+								<!--花束循环开始-->
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/katong/katong1.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/katong/katong2.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/katong/katong3.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/katong/katong4.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="clear"></div>
+								<!--花束循环结束-->
+							</div>
+						</div>
+					</div>
+					<div class="katong_huahe">
+						<div class="katong_huasu_title"><h2 class="en">花盒</h3><a href="" class="more">查看所有新品</a></div>
+						<div class="katong_huasu_text">
+							<div class="huasu_text_top"><img src="<?php echo _PUBLIC_;?>images/hh1.jpg"><img src="<?php echo _PUBLIC_;?>images/hh2.jpg"></div>
+							<div class="huasu_text_bottom">
+								<!--花束循环开始-->
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/huahe/huahezi1.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/huahe/huahezi2.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/huahe/huahezi3.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/huahe/huahezi4.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="clear"></div>
+								<!--花束循环结束-->
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--卡通结束-->
+				<!--巧克力开始-->
+				<div class="qiaokeli">
+					<div class="katong_huasu">
+						<div class="katong_huasu_title"><h2 class="en">巧克力</h3><a href="" class="more">查看所有新品</a></div>
+						<div class="katong_huasu_text">
+							<div class="huasu_text_top"><img src="<?php echo _PUBLIC_;?>images/qkl1.jpg"><img src="<?php echo _PUBLIC_;?>images/qkl2.jpg"></div>
+							<div class="huasu_text_bottom">
+								<!--花束循环开始-->
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/qiaokeli/qiaokeli1.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/qiaokeli/qiaokeli2.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/qiaokeli/qiaokeli3.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/qiaokeli/qiaokeli4.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="clear"></div>
+								<!--花束循环结束-->
+							</div>
+						</div>
+					</div>
+					<div class="katong_huahe">
+						<div class="katong_huasu_title"><h2 class="en">开业花篮</h3><a href="" class="more">查看所有新品</a></div>
+						<div class="katong_huasu_text">
+							<div class="huasu_text_top"><img src="<?php echo _PUBLIC_;?>images/kyhl1.jpg"><img src="<?php echo _PUBLIC_;?>images/kyhl2.jpg"></div>
+							<div class="huasu_text_bottom">
+								<!--花束循环开始-->
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/hualan/hualan1.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/hualan/hualan2.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/hualan/hualan3.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="huasu_bottom">
+									<div class="huasu_bottom_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/hualan/hualan4.jpg" width="98" height="130"></a></div>
+									<div class="huasu_bottom_wen"><a href="">幸福很简单</a><br><font color="#cf0f0f"><b>￥170</b></font></div>
+								</div>
+								<div class="clear"></div>
+								<!--花束循环结束-->
+							</div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--巧克力结束-->
+				<!--评论开始-->
+				<div class="pinglun">
+					<div class="pinglun_remen">
+						<div class="pinglun_remen_title"><h4>热门评论</h4></div>
+						<div class="pinglun_remen_text">
+							<!--评论循环开始-->
+							<div class="ping_xun">
+								<div class="ping_xun_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/rexiao/rexiao1.jpg" width="60" height="60"></a></div>
+								<div class="ping_xun_wen"><a href=""><font color="#ff6600">名称：馨香</font></a><br>很满意的服务，很好。就是有的东西从总部发货</div>
+							</div>
+							<div class="ping_xun">
+								<div class="ping_xun_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/rexiao/rexiao3.jpg" width="60" height="60"></a></div>
+								<div class="ping_xun_wen"><a href=""><font color="#ff6600">名称：心中的爱</font></a><br>态度很好</div>
+							</div>
+							<div class="ping_xun">
+								<div class="ping_xun_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/tehui/tehui2.jpg" width="60" height="60"></a></div>
+								<div class="ping_xun_wen"><a href=""><font color="#ff6600">名称：真爱用不变</font></a><br>跟图片一样，我对象收到礼物很高兴，而且能够准时发货</div>
+							</div>
+							<div class="ping_xun">
+								<div class="ping_xun_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/tehui/tehui4.jpg" width="60" height="60"></a></div>
+								<div class="ping_xun_wen"><a href=""><font color="#ff6600">名称：甜蜜</font></a><br>1039号客服很耐心，服务特别棒，给五星超级好评</div>
+							</div>
+							<div class="ping_xun">
+								<div class="ping_xun_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/langman/langman2.jpg" width="60" height="60"></a></div>
+								<div class="ping_xun_wen"><a href=""><font color="#ff6600">名称：优雅</font></a><br>已经收到，是送给妈妈的，我没看到，所以不好评价</div>
+							</div>
+							<div class="ping_xun">
+								<div class="ping_xun_tu"><a href=""><img src="<?php echo _PUBLIC_;?>images/langman/langman3.jpg" width="60" height="60"></a></div>
+								<div class="ping_xun_wen"><a href=""><font color="#ff6600">名称：永远的爱</font></a><br>爱人家小区停电，辛苦送货的小伙子等候了；“唯一不足的是</div>
+							</div>
+							<!--评论循环结束-->
+						</div>
+					</div>
+					<div class="pinglun_zhuanti">
+						<div class="pinglun_remen_title"><h4>兄弟缘节日鲜花专题</h4></div>
+						<div class="pinglun_zhuanti_text">
+							<ul>
+								<li>·<a href="">圣诞节鲜花</a></li>
+								<li>·<a href="">七夕节鲜花</a></li>
+								<li>·<a href="">父亲节鲜花</a></li>
+								<li>·<a href="">母亲节鲜花</a></li>
+								<li>·<a href="">中秋节鲜花</a></li>
+								<li>·<a href="">教师节鲜花</a></li>
+								<li>·<a href="">情人节鲜花</a></li>
+								<li>·<a href="">女人节鲜花</a></li>
+								<li>·<a href="">白色情人节鲜花</a></li>
+								<li>·<a href="">网络情人节鲜花</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--评论结束-->
+				<!--文章列表开始-->
+				<div class="know">
+					<div class="know_zhufu">
+						<div class="pinglun_remen_title"><h4 class="le">祝福语大全</h4><a href="" class="moreb">更多>></a></div>
+						<div class="know_zhufu_text">
+							<ul>
+								<li>·<a href="">圣诞节祝福语</a></li>
+								<li>·<a href="">祝福身体健康的祝福语</a></li>
+								<li>·<a href="">2014中秋祝福语</a></li>
+								<li>·<a href="">教师节到了，敬爱的老师，我想对你说，你辛苦了</a></li>
+								<li>·<a href="">教师节祝福语</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="know_zhishi">
+						<div class="pinglun_remen_title"><h4 class="le">花材知识</h4><a href="" class="moreb">更多>></a></div>
+						<div class="know_zhufu_text">
+							<ul>
+								<li>·<a href="">月季花越开越小的原因</a></li>
+								<li>·<a href="">插花保鲜的方法</a></li>
+								<li>·<a href="">盆花冬季管理要诀</a></li>
+								<li>·<a href="">花卉知识——花材选择</a></li>
+								<li>·<a href="">花束\花篮常用的花材知识</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="know_xingzuo">
+						<div class="pinglun_remen_title"><h4 class="le">星座鲜花</h4><a href="" class="moreb">更多>></a></div>
+						<div class="know_zhufu_text">
+							<ul>
+								<li>·<a href="">揭秘12星座的怪癖</a></li>
+								<li>·<a href="">恋爱中爱说谎话的星座们</a></li>
+								<li>·<a href="">十二星座男光棍原因及颠覆法则</a></li>
+								<li>·<a href="">12星座的不同恋爱观</a></li>
+								<li>·<a href="">12星座女孩最佳排毒食物</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--文章列表结束-->
+			</div>
+			<!--主体结束-->
+			<!--footer开始-->
+			<?php include("./Web/View/Home/Base/footer.html"); ?>
+			<!--footer结束-->
+		</div>
+	</body>
+</html>

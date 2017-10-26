@@ -1,0 +1,62 @@
+			<div id="header">
+				<!--header_top开始-->
+				<div class="header_top">
+					<div class="hearder_top_gun"><marquee direction="left" height="26" onMouseOut="this.start()" onMouseOver="this.stop()" scrollAmount="3.2"><font color="red"><u>你好，欢迎光临兄弟鲜花网！</u></font></marquee></div>
+					<div class="hearder_top_link">
+						<ul>
+							<li><a href="">关于我们</a></li>
+							<li><a href="<?php echo URL."/Order/detail"; ?>">订单查询</a></li>
+							<li><a href="">收藏本站</a></li>
+							<li><a href="">帮助中心</a></li>
+							<li><a href="<?php echo URL."/Users/edit";?>" target="_blank">个人中心</a></li>
+							<li><a href="<?php echo URL."/Shopping/shops"; ?>"   target="_blank">购物车</a></li>
+							<li><a href="<?php echo URL."/Login/logins"; ?>" target="_blank">登陆</a></li>
+							<li><a style="color:red;font-weight:bold;" href="<?php echo URL."/Users/add";?>" target="_blank">注册</a></li>
+							<li><a style="color:red;font-weight:bold;" href="<?php echo URL."/Login/logout"; ?>" target="_blank">注销</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--header_top结束-->
+				<!--header_top2开始-->
+				<div class="header_top2">
+					<div class="header_top2_logo"><a href=""><img src="<?php echo _PUBLIC_;?>images/logo.jpg" alt="兄弟缘鲜花网LOGO" title="兄弟缘鲜花网" width="400" height="112"></a></div>
+					<div class="header_top2_ri">
+						<ul>
+							<li><a href="">生日鲜花</a></li>
+							<li><a href="">城市专题</a></li>
+							<li><a href="">99朵玫瑰</a></li>
+							<li class="active"><a href="">父亲节</a></li>
+						</ul>
+					</div>
+				</div>
+				<!--header_top2结束-->
+				<!--header_nav开始-->
+				<div class="header_nav">
+					<ul id="jsddm">
+						<li class="home zong"><a href="<?php echo URL; ?>">首页</a></li>
+						<?php
+                            //循环输出根类别信息
+                            foreach($this->tplist as $type){
+                                echo "<li class=\"zong\">";
+                                echo "<a href=\"".URL."/index/list?tid={$type['id']}\">{$type['name']}</a>";
+                                //判断并输出子类别信息
+                                if(count($type['zlist'])>0){
+                                    echo "<ul class=\"zi\">";
+                                    foreach($type['zlist'] as $tp){
+                                        echo "<li><a href=\"".URL."/index/list?tid={$type['id']}&typeid={$tp['id']}\">{$tp['name']}</a></li>";
+                                    }
+                                    echo "</ul>";
+                                }
+                                echo "</li>";
+                            }
+						?>
+					</ul>
+					<a href=""><img src="<?php echo _PUBLIC_;?>images/english.jpg" width="80" height="27" style="margin-top:6px;"></a>
+				</div>
+				<!--header_nav结束-->
+				<!--header_search开始-->
+				<div class="header_search">
+					<input type="search" size="25" name="sousuo" value="玫瑰" class="search"><input type="image" name="submit" class="sousuo" src="<?php echo _PUBLIC_;?>images/sousuo.gif"><span style="float:left;margin-left:15px;"><font color="red"><b>热门词：</b></font>浪漫爱情　商业鲜花　卡通花束　巧克力蛋糕</span><span style="float:right; padding-right:30px;">购物车中有 <font color="red">0</font> 件商品</span>
+				</div>
+				<!--header_search结束-->
+			</div>
